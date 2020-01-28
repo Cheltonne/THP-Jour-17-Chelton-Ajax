@@ -76,10 +76,13 @@ class Game
   def ennemies_attack
       @ennemies_in_sight.each do |ennemy|
         ennemy.attacks(human_player)
+        if human_player.life_points < 1
+          return false
+        end
       end
   end
 
-  def end
+  def end_game
     if human_player.life_points >= 1
       puts "Winner winner, chicken dinner"
     else
@@ -89,19 +92,19 @@ class Game
 
   def new_players_in_sight
     if players_left == ennemies_in_sight.length
-      puts "Tous les joueurs sont déjà en vue."
+      puts "Tous les joueurs sont déjà en vue.\n\n"
     end
     dice = rand(1..6)
     case dice
     when 1
-      puts "Aucun nouveau joueur adverse n'arrive."
+      puts "Aucun nouveau joueur adverse n'arrive.\n\n"
     when  [2.. 4]
         ennemies_in_sight << Player.new("joueur_#{rand(1..50)}")
-        puts "Un nouvel ennemi apparait !"
+        puts "Un nouvel ennemi apparait !\n\n"
     when 5 || 6
       2.times do |new_player_in_sight|
         ennemies_in_sight << Player.new("joueur_#{rand(1..50)}")
-        puts "Deux nouveaux ennemis apparaissent !"
+        puts "Deux nouveaux ennemis apparaissent !\n\n"
       end
     end
   end

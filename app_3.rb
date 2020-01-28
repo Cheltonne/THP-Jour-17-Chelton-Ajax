@@ -16,6 +16,5 @@ while my_game.is_still_ongoing? == true
   my_game.show_players
   my_game.new_players_in_sight
   my_game.menu_choice(my_game.menu)
-  # binding.pry
 end
-my_game.end
+my_game.end_game
