@@ -11,7 +11,7 @@ puts "------------------------------------------------
 -------------------------------------------------\n\n"
 puts "Comment t'appelles-tu ?"
 print "> "
-my_game = Game.new(gets.chomp)                              #La partie est lancee !
+my_game = Game.new(gets.chomp) #La partie est lancee !
 while my_game.is_still_ongoing? == true
   my_game.show_players
   my_game.new_players_in_sight

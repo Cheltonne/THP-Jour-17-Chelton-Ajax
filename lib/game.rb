@@ -17,7 +17,7 @@ class Game
   end
 
   def is_still_ongoing?
-    if human_player.life_points > 0 && @ennemies_in_sight != []
+    if human_player.life_points > 0 && @ennemies_in_sight != [] #Ceci signifie "Tant que le joueur est vivant ET que la liste des ennemis n'est pas un tableau vide" 
       return true
     else
       return false
@@ -36,7 +36,7 @@ class Game
     i = 0
     @ennemies_in_sight.each do |ennemy|                           #On verifie pour chaque ennemi qu'il lui reste bien des PV, si c'est le cas, on les affiche, et on lui affecte un numero correspondant a sa place dans l'array @ennemies.
       if ennemy.life_points > 0
-        puts "#{i} - Ennemi #{i} a #{ennemy.life_points} points de vie."
+        puts "#{i} - Ennemi #{ennemy.name} a #{ennemy.life_points} points de vie."
         i += 1
       end
     end
@@ -54,14 +54,8 @@ class Game
       human_player.search_weapon
     elsif player_action == 's'
       human_player.search_health_pack
-    elsif player_action == "0" && ennemies_in_sight[0] != nil
-      human_player.attacks(ennemies_in_sight[0])
-    elsif player_action == "1" && ennemies_in_sight[1] != nil
-      human_player.attacks(ennemies_in_sight[1])
-    elsif player_action == "2" && ennemies_in_sight[2] != nil
-      human_player.attacks(ennemies_in_sight[2])
-    elsif player_action == "3" && ennemies_in_sight[3] != nil
-      human_player.attacks(ennemies_in_sight[3])
+    elsif ennemies_in_sight[player_action.to_i] != nil
+      human_player.attacks(ennemies_in_sight[player_action.to_i])
     else
       puts "⚠️ Ce choix n'existe pas. Tu as perdu un tour pour rien ! ⚠️\n\n"
     end
