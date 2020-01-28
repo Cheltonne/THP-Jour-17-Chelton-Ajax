@@ -63,7 +63,7 @@ class Game
     elsif player_action == "3" && ennemies_in_sight[3] != nil
       human_player.attacks(ennemies_in_sight[3])
     else
-      puts "Ce choix n'existe pas. Tu as perdu un tour pour rien !\n\n"
+      puts "/!\\Ce choix n'existe pas. Tu as perdu un tour pour rien /!\\\n\n"           #J'utile un backslash a deux reprise afin d'afficher correctement les backslashs dans mon puts
     end
     @ennemies_in_sight.each do |i|
       if i.life_points <= 0
