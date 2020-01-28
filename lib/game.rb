@@ -21,30 +21,32 @@ class Game
     else
       return false
     end
-  end
+  end 
 
   def show_players
-    puts "Il te reste #{human_player.life_points} points de vie. Il reste #{ennemies.length} ennemis en jeu."
+    puts "Il te reste #{human_player.life_points} points de vie. Il reste #{ennemies.length} ennemis en jeu.\n\n"
   end
 
   def menu
-    puts "a - chercher une meilleure arme\ns - chercher à se soigner\n\n"
-    puts "attaquer un joueur en vue :"#\n0 - Ennemi 0 a #{@ennemies[0].life_points} points de vie\n1 - Ennemi 1 a #{ennemies[1].life_points} points de vie"
-    # puts "2 - Ennemi 2 a #{ennemies[2].life_points} points de vie.\n3 - Ennemi 3 a #{ennemies[3].life_points} points de vie."
+    puts "Voici les differents choix possibles, entre la lettre ou le chiffre correspondant a ton choix :"
+    puts "a - Chercher une meilleure arme"
+    puts "s - Chercher à se soigner\n\n"
+    puts "Attaquer un joueur en vue :"
     i = 0
-    @ennemies.each do |ennemy|
+    @ennemies.each do |ennemy|                           #On verifie pour chaque ennemi qu'il lui reste bien des PV, si c'est le cas, on les affiche, et on lui affecte un numero correspondant a sa place dans l'array @ennemies.
       if ennemy.life_points > 0
         puts "#{i} - Ennemi #{i} a #{ennemy.life_points} points de vie."
         i += 1
       end
     end
+    puts ""
     puts "Quel est ton choix ?"
     print "> "
     return player_action = gets.chomp
   end
 
   def menu_choice(player_action)
-    if @ennemies == nil
+    if @ennemies == []
       return false
     end
     if player_action == 'a'
@@ -70,7 +72,6 @@ class Game
     ennemies_attack
   end
 
-
   def ennemies_attack
       @ennemies.each do |ennemy|
         ennemy.attacks(human_player)
@@ -84,6 +85,4 @@ class Game
       puts "Game over..."
     end
   end
-
 end #Fin de la definition de classe Game
-# binding.pry
