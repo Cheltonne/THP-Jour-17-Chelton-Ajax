@@ -54,7 +54,7 @@ class Game
       human_player.search_weapon
     elsif player_action == 's'
       human_player.search_health_pack
-    elsif ennemies_in_sight[player_action.to_i] != nil
+    elsif ennemies_in_sight[player_action.to_i] != nil #Si le choix du joueur est un chiffre, je regarde si un ennemi se trouve a l'index correspondant dans l'array des ennemis a portee, si c'est le cas, j'attaque cet ennemi
       human_player.attacks(ennemies_in_sight[player_action.to_i])
     else
       puts "⚠️ Ce choix n'existe pas. Tu as perdu un tour pour rien ! ⚠️\n\n"
