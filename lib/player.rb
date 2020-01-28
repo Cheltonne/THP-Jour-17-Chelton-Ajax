@@ -13,7 +13,7 @@ attr_accessor :name, :life_points
   def get_damage(damage)
     @life_points -= damage
     if @life_points <= 0
-      puts "le joueur #{name} a ete tue !"
+      puts "le joueur #{name} a été tué !"
     end
   end
 
@@ -52,7 +52,7 @@ end
 
 def search_weapon
   new_weapon_level = rand(1..6)
-  puts "Tu as trouve une arme de niveau #{new_weapon_level}"
+  puts "Tu as trouvé une arme de niveau #{new_weapon_level}.\n\n"
   if new_weapon_level > @weapon_level
     @weapon_level = new_weapon_level
     puts "Oh que oui, elle est meilleure que ton arme actuelle, tu la prends donc."

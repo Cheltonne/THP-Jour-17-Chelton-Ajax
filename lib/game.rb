@@ -25,7 +25,7 @@ class Game
   end 
 
   def show_players
-    puts "Il te reste #{human_player.life_points} points de vie. Il reste #{ennemies_in_sight.length} ennemis en jeu.\n\n"
+    puts "Il te reste #{human_player.life_points} points de vie, et tu possedes une arme de niveau #{human_player.weapon_level}. Il reste #{ennemies_in_sight.length} ennemis en jeu.\n\n"
   end
 
   def menu
@@ -54,16 +54,16 @@ class Game
       human_player.search_weapon
     elsif player_action == 's'
       human_player.search_health_pack
-    elsif player_action == "0"
+    elsif player_action == "0" && ennemies_in_sight[0] != nil
       human_player.attacks(ennemies_in_sight[0])
-    elsif player_action == "1"
+    elsif player_action == "1" && ennemies_in_sight[1] != nil
       human_player.attacks(ennemies_in_sight[1])
-    elsif player_action == "2"
+    elsif player_action == "2" && ennemies_in_sight[2] != nil
       human_player.attacks(ennemies_in_sight[2])
-    elsif player_action == "3"
+    elsif player_action == "3" && ennemies_in_sight[3] != nil
       human_player.attacks(ennemies_in_sight[3])
     else
-      puts "Ce choix n'existe pas."
+      puts "Ce choix n'existe pas. Tu as perdu un tour pour rien !\n\n"
     end
     @ennemies_in_sight.each do |i|
       if i.life_points <= 0
