@@ -18,11 +18,11 @@ attr_accessor :name, :life_points
   end
 
   def attacks(player)
-    if life_points < 1
+    if life_points < 1                          #On verifie que l'instance qui va attaquer a toujours des PV, si ce n'est pas le cas, on retourne une valeur (n'importe laquelle) pour sortir de la methode.
       return true
     end
     puts "Le joueur #{@name} attaque le joueur #{player.name}."
-    damage_dealt = compute_damage
+    damage_dealt = compute_damage               #On stocke les degats dans une variable afin de faire correspondre le texte affiche aux degats appliques.
     puts "Il lui inflige #{damage_dealt} de dommages."
     player.get_damage(damage_dealt)
   end
